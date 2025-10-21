@@ -1,0 +1,29 @@
+﻿<h2>Index</h2>
+<p>@ViewBag.name</p>
+@{
+    SelectListItem[] liste = new SelectListItem[3]
+    {
+        new SelectListItem(){Text="Mert"},
+        new SelectListItem(){Text="Eren"},
+        new SelectListItem(){Text="Reyhan"}
+    };
+}
+
+<!--Html Helper ile form Oluşturma-->
+@using(Html.BeginForm("Index","Home"))
+{
+    @Html.TextBox("ad");
+    @Html.DropDownList("kisiler",liste)
+    @("Onaylıyorum")@Html.CheckBox("onay")
+    <input type="submit" value="Gönder" />
+}
+
+<form asp-action="Index" asp-controller="Home" method="post">
+    <input type="text" name="ad" />
+    <select name="kisiler">
+        <option>Ali</option>
+        <option>Mahmut</option>
+    </select>
+    Onaylıyorum:<input type="checkbox" name="onay" value="true" />
+    <input type="submit" value="Gönder" />
+</form>
