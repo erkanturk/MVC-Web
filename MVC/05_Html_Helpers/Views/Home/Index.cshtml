@@ -1,0 +1,41 @@
+﻿@model _05_Html_Helpers.Models.User
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    </head>
+    <body>
+        @using(Html.BeginForm("Submit","Home",FormMethod.Post))
+        {
+            <fieldSet>
+                <legend>Kullanıcı Bilgileri</legend>
+                <div>
+                    @Html.LabelFor(model => model.Name)<!--<label>Name</label>-->
+                    @Html.TextBoxFor(model => model.Name)<!--<input type="text" name="name" value="" /> -->
+                    @Html.ValidationMessageFor(model => model.Name)<!--<span asp-validation-for="">-->
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.Age)
+                    @Html.TextBoxFor(model => model.Age)
+                    @Html.ValidationMessageFor(model => model.Age)
+                </div>
+                <div>
+                    @Html.DropDownListFor(n=>Model.Country,Model.CountryList,"Select Country")
+                    @Html.ValidationMessageFor(model => model.Country)
+                </div>
+                <div>
+                    @Html.RadioButtonFor(m => Model.Gender,"Male")Male
+                    @Html.RadioButtonFor(m=>Model.Gender,"Female")Female
+                    @Html.ValidationMessageFor(model => Model.Gender)
+                </div>
+                <div>
+                    <input type="submit" value="Gönder" />
+            </div>
+            </fieldSet>
+        }
+    @Html.ValidationSummary()<!--Validasyon hatalarını liste halinde göster-->
+</body>
+</html>
