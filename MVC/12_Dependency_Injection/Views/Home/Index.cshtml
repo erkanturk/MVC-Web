@@ -1,0 +1,15 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+   @foreach(var student in Model)
+   {
+       <h3>Student Name: @student.Name</h3>
+       <p>Age: @student.Age</p>
+       <p>ID: @student.Id</p>
+       <hr />
+    }
+
+</div>
