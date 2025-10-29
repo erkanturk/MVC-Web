@@ -1,0 +1,29 @@
+﻿@model List<Student>
+<h1>Student List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>SurName</th>
+            <th>Age</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Age</td>
+                <td>
+                    <a href="/Home/DeleteDataSecure" class="btn btn-danger me-2">Öğreci Sil</a>
+                    <a href="/Home/UpdateDataSecure" class="btn btn-warning me-2">Öğrenci Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

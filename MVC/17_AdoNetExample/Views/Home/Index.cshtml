@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+ <h2>Welcome To Ado.Net Example</h2>
+<hr />
+<form method="post" asp-action="AddData" asp-controller="Home" class="mb-3">
+    <button type="submit" class="btn btn-success">Add Data Default</button>
+</form>
+
+<hr />
+<form asp-action="AddDataSecure" asp-controller="Home" method="post" class="mb-3">
+    <div class="mb-2">
+        <input type="text" name="FirstName" placeholder="First Name" class="form-control" required />
+    </div>
+    <div class="mb-2">
+            <input type="text" name="LastName" placeholder="Last Name" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <input type="number" name="Age" placeholder="Age" class="form-control" required/>
+    </div>
+        <button type="submit" class="btn btn-primary">Add Data Secure</button>
+</form>
+
+
+    <hr />
+    <a href="/Home/GetData" class="btn btn-info me-2">Get students</a>
+    <a href="/Home/GetCount" class="btn btn-secondary">Get Students Count</a>
+</div>

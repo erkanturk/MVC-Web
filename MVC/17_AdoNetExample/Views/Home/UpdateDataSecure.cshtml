@@ -1,0 +1,19 @@
+﻿<h1>Update Öğrenci</h1>
+<div class="text-center">
+    <hr />
+    <form method="post" asp-action="UpdateDataSecure" class="mb-3">
+        <div class="mb-2">
+            <input type="number" name="Id" placeholder="Öğrenci numarası" class="form-control" required />
+        </div>
+        <div class="mb-2">
+            <input type="text" name="FirstName" placeholder="Yeni Ad" class="form-control" required />
+        </div>
+        <div class="mb-2">
+            <input type="text" name="LastName" placeholder="Yeni Soyad" class="form-control" required />
+        </div>
+        <div class="mb-2">
+            <input type="number" name="Age" placeholder="Yeni Yaş" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-warning">Update Data Secure</button>
+    </form>
+</div>
