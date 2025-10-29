@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16_WebApi", "16_WebApi\16_W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17_AdoNetExample", "17_AdoNetExample\17_AdoNetExample.csproj", "{C5141239-F8E6-4347-81C7-ED7DA55632C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18_EntityFrameworkExample", "18_EntityFrameworkExample\18_EntityFrameworkExample.csproj", "{00120C77-57B9-4A52-B909-98B5F482052D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{C5141239-F8E6-4347-81C7-ED7DA55632C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5141239-F8E6-4347-81C7-ED7DA55632C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5141239-F8E6-4347-81C7-ED7DA55632C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00120C77-57B9-4A52-B909-98B5F482052D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00120C77-57B9-4A52-B909-98B5F482052D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00120C77-57B9-4A52-B909-98B5F482052D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00120C77-57B9-4A52-B909-98B5F482052D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
