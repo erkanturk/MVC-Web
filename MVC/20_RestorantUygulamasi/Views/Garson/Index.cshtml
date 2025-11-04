@@ -1,0 +1,53 @@
+﻿@model List<_20_RestorantUygulamasi.ViewModels.MasaListeViewModel>
+@{
+    ViewData["Title"]="Masalar";
+}
+<h2 class="mb-4">Masalar</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <div class="card @(item.Masa.DoluMu ? "bg-danger" : "bg-success")">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Masa @item.Masa.MasaNumarasi</h5>
+
+                    @if (item.Masa.DoluMu && item.AktifRezervasyon != null)
+                    {
+                        <p class="card-text">
+                            <span class="text-danger"><strong>Dolu</strong></span><br>
+                            <small class="text-white">Müşteri: <strong>@item.AktifRezervasyon.MusteriAdi</strong></small><br>
+                            <small class="text-white">Saat: @item.AktifRezervasyon.RezervasyonTarihi.ToString("HH:mm")</small>
+                        </p>
+                    }
+                    else if (item.Masa.DoluMu)
+                    {
+                        <p class="card-text">
+                            <span class="text-danger"><strong>Dolu</strong></span><br>
+                            <small class="text-white">Manuel olarak dolu yapılmış</small>
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="card-text">
+                            <span class="text-success"><strong>Boş</strong></span>
+                        </p>
+                    }
+
+                    <div class="d-flex justify-content-center">
+                        <a asp-controller="Rezervasyon" asp-action="Detay" asp-route-masaId="@item.Masa.Id" class="btn btn-primary btn-sm me-2">Düzenle</a>
+
+                        <div class="d-flex justify-content-center">
+                            <a asp-controller="Garson" asp-action="MasaDetay" asp-route-masaId="@item.Masa.Id" class="btn btn-info btn-sm me-2">Detay</a>
+                            <form asp-controller="Garson" asp-action="DurumDegistir" method="post" class="d-inline">
+                                <input type="hidden" name="masaId" value="@item.Masa.Id" />
+                                <button type="submit" class="btn @(item.Masa.DoluMu ? "btn-success" : "btn-danger") btn-sm">
+                                    @(item.Masa.DoluMu ? "Boş Yap" : "Dolu Yap")
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,71 @@
+﻿@model _20_RestorantUygulamasi.ViewModels.MasaDetayViewModel
+@{
+    ViewData["Title"] = "Masa Detay";
+
+}
+
+<h2 class="mb-4">Masa @Model.Masa.MasaNumarasi Detayı</h2>
+
+
+<div class="alert alert-secondary">
+    <strong>Debug:</strong> AktifRezervasyonId = @Model.AktifRezervasyonId
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Masa Durumu: <span class="@(Model.Masa.DoluMu ? "text-danger" : "text-success")">@(Model.Masa.DoluMu ? "Dolu" : "Boş")</span></h5>
+    </div>
+    <div class="card-body">
+        @if (Model.Masa.DoluMu && Model.AktifRezervasyonId.HasValue)
+        {
+            var aktifRezervasyon = Model.BugunRezervasyonlar.FirstOrDefault(i => i.Id == Model.AktifRezervasyonId);
+            if (aktifRezervasyon != null)
+            {
+                <div class="alert alert-info">
+                    <h5>Aktif Rezervasyon Bilgileri</h5>
+                    <p class=""><strong>Müşteri Adı:</strong> @aktifRezervasyon.MusteriAdi</p>
+                    <p><strong>Rezervasyon Saati:</strong> @aktifRezervasyon.RezervasyonTarihi.ToString("HH:mm")</p>
+                    <form asp-controller="Garson" asp-action="MasayiBosalt" method="post">
+                        <input type="hidden" name="masaId" value="@Model.Masa.Id" />
+                        <button type="submit" class="btn btn-warning">Masayı Boşalt</button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Aktif rezervasyon ID'si var ama rezervasyon bulunamadı!
+                </div>
+            }
+        }
+        else if (Model.Masa.DoluMu)
+        {
+            <div class="alert alert-warning">
+                Masa dolu ama aktif rezervasyon ID'si yok!
+            </div>
+        }
+
+
+        @if (Model.BugunRezervasyonlar.Any())
+        {
+            <h5>Bugünkü Rezervasyonlar:</h5>
+            <ul class="list-group">
+                @foreach (var rezervasyon in Model.BugunRezervasyonlar)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>@rezervasyon.MusteriAdi</strong> - @rezervasyon.RezervasyonTarihi.ToString("HH:mm")
+                        </div>
+                        @if (!Model.Masa.DoluMu || !Model.AktifRezervasyonId.HasValue)
+                        {
+                            <form asp-controller="Garson" asp-action="RezervasyonAktifEt" method="post" style="display:inline;">
+                                <input type="hidden" name="rezervasyonId" value="@rezervasyon.Id" />
+                                <button type="submit" class="btn btn-success btn-sm">Aktif Et</button>
+                            </form>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
