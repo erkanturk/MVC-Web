@@ -7,6 +7,6 @@
         public virtual Masa Masa { get; set; }
         public string MusteriAdi { get; set; }
         public DateTime RezervasyonTarihi { get; set; }
-        public DateTime OlusturmaTarihi { get; set; }
+        public DateTime OlusturmaTarihi { get; set; } = DateTime.Now;
     }
 }
