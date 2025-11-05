@@ -1,4 +1,5 @@
 ﻿using _20_RestorantUygulamasi.DataContext;
+using _20_RestorantUygulamasi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _20_RestorantUygulamasi.Controllers
@@ -34,6 +35,7 @@ namespace _20_RestorantUygulamasi.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
+      //register oluşturulacak ve admin tarafı bu kayıt işlemini yapacak
 
     }
 }
